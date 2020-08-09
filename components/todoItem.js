@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Text, View, TouchableOpacity } from 'react-native'
+import { Text } from 'react-native'
 import tailwind from 'tailwind-rn'
 import styled from 'styled-components'
 import { getColor } from 'tailwind-rn'
