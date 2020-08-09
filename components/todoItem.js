@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Text } from 'react-native'
 import tailwind from 'tailwind-rn'
-import styled from 'styled-components'
+import styled from 'styled-components/native'
 import { getColor } from 'tailwind-rn'
 
 import { GlobalContext } from '../context/GlobalState'

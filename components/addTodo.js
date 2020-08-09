@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
-import { Text, View, TextInput, Alert, Modal, TouchableHighlight } from 'react-native'
+import { Text, View, TextInput, Alert } from 'react-native'
 import tailwind from 'tailwind-rn'
-import styled from 'styled-components'
+import styled from 'styled-components/native'
 import { getColor } from 'tailwind-rn'
 import { uuidv4 } from '../utils/uuid'
 
@@ -19,6 +19,7 @@ const AddTodo = () => {
   const submitTodo = () => {
     if (text !== "" && text.length > 3) {
       addTodo({ text: text, _id: uuidv4() })
+
       textInput.clear()
       setText("")
     } else {
