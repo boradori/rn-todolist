@@ -1,40 +1,40 @@
 import { StatusBar } from 'expo-status-bar'
-import React, { useState } from 'react'
-import { SafeAreaView, Text, View, FlatList, TouchableHighlight, TouchableOpacity, Dimensions } from 'react-native'
+import React from 'react'
+import { GlobalProvider } from './context/GlobalState'
+import { SafeAreaView, View, FlatList } from 'react-native'
 import tailwind from 'tailwind-rn'
-import styled from 'styled-components/native'
 import Header from './components/header'
-import TodoItem from './components/todoItem'
+
+import TodoList from './components/todoList'
+import AddTodo from './components/addTodo'
+import { uuidv4 } from './utils/uuid'
 
 export default function App() {
-  const [todos, setTodos] = useState([
-    { text: "Buy coffee", key: '1' },
-    { text: "Create an app", key: '2' },
-    { text: "Meditate", key: '3' },
-  ])
 
-  const pressHandler = key => {
-    setTodos((prevTodos) => {
-      return prevTodos.filter(todo => todo.key !== key)
-    })
-  }
+  // const [todos, setTodos] = useState([
+  //   { text: "Buy coffee", key: uuidv4() },
+  //   { text: "Create an app", key: uuidv4() },
+  //   { text: "Meditate", key: uuidv4() },
+  // ])
+
+  // const submitHandler = (text) => {
+  //   const newTodo = { text: text, id: uuidv4() }
+  //   console.log(newTodo.id)
+  //   setTodos(prevTodos => {
+  //     return [newTodo, ...prevTodos]
+  //   })
+  // }
 
   return (
-    <SafeAreaView style={tailwind('flex-1')}>
-      <Header />
-      <View style={tailwind('p-6')}>
-        {/* form */}
-        <View style={tailwind('mt-0')}>
-          <FlatList
-            data={todos}
-            // style={tailwind('bg-indigo-300')}
-            renderItem={({ item }) => (
-              <TodoItem item={item} pressHandler={pressHandler} />
-            )}
-          />
+    <GlobalProvider>
+      <SafeAreaView style={tailwind('flex-1')}>
+        <Header />
+        <View style={tailwind('p-6')}>
+          <AddTodo />
+          <TodoList />
         </View>
-      </View>
-      <StatusBar style="auto" />
-    </SafeAreaView>
+        <StatusBar style="auto" />
+      </SafeAreaView>
+    </GlobalProvider>
   );
 }

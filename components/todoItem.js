@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Text, View, TouchableOpacity } from 'react-native'
 import tailwind from 'tailwind-rn'
 import styled from 'styled-components'
 import { getColor } from 'tailwind-rn'
+
+import { GlobalContext } from '../context/GlobalState'
 
 const Button = styled.TouchableOpacity`
   border-style: dashed;
@@ -10,11 +12,13 @@ const Button = styled.TouchableOpacity`
   border-color: ${getColor('gray-500')};
 `
 
-const TodoItem = ({ item, pressHandler }) => {
+const TodoItem = ({ item }) => {
+  const { deleteTodo } = useContext(GlobalContext)
+
   return (
     <Button
       style={tailwind('justify-center rounded-lg h-12 mt-4 p-8 bg-pink-300')}
-      onPress={() => pressHandler(item.key)}
+      onPress={() => deleteTodo(item._id)}
     >
       <Text style={tailwind('text-white self-center text-2xl font-bold')}>{item.text}</Text>
     </Button>
