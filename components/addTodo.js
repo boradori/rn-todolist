@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { Text, View, TextInput } from 'react-native'
+import { Text, View, TextInput, Alert, Modal, TouchableHighlight } from 'react-native'
 import tailwind from 'tailwind-rn'
 import styled from 'styled-components'
 import { getColor } from 'tailwind-rn'
@@ -17,10 +17,16 @@ const AddTodo = () => {
   const [text, setText] = useState("")
 
   const submitTodo = () => {
-    setText("")
-    textInput.clear()
-    if (text !== "") {
+    if (text !== "" && text.length > 3) {
       addTodo({ text: text, _id: uuidv4() })
+      textInput.clear()
+      setText("")
+      setModalVisible(true)
+    } else {
+      Alert.alert("Oops!", "Todos must be over 3 characters long", [
+        {text: "Understood", onPress: () => console.log("alert closed")},
+        {text: "Cancel", onPress: () => console.log("Cancel pressed"), style: "cancel"}
+      ], { cancelable: false })
     }
   }
 
