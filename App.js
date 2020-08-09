@@ -4,6 +4,7 @@ import { SafeAreaView, Text, View, FlatList, TouchableHighlight, TouchableOpacit
 import tailwind from 'tailwind-rn'
 import styled from 'styled-components/native'
 import Header from './components/header'
+import TodoItem from './components/todoItem'
 
 export default function App() {
   const [todos, setTodos] = useState([
@@ -12,18 +13,23 @@ export default function App() {
     { text: "Meditate", key: '3' },
   ])
 
+  const pressHandler = key => {
+    setTodos((prevTodos) => {
+      return prevTodos.filter(todo => todo.key !== key)
+    })
+  }
+
   return (
     <SafeAreaView style={tailwind('flex-1')}>
       <Header />
-      <View style={tailwind('p-12')}>
+      <View style={tailwind('p-6')}>
         {/* form */}
-        <View style={tailwind('mt-6')}>
+        <View style={tailwind('mt-0')}>
           <FlatList
             data={todos}
+            // style={tailwind('bg-indigo-300')}
             renderItem={({ item }) => (
-              <Text>
-                { item.text }
-              </Text>
+              <TodoItem item={item} pressHandler={pressHandler} />
             )}
           />
         </View>
