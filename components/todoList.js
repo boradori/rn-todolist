@@ -9,11 +9,11 @@ const TodoList = () => {
   const { todos } = useContext(GlobalContext)
 
   return (
-    <View style={tailwind('mt-0')}>
+    <View style={tailwind('flex-1 mt-0')}>
       <FlatList
         data={todos}
         keyExtractor={(item) => item._id}
-        // style={tailwind('bg-indigo-300')}
+        style={tailwind('')}
         renderItem={({ item }) => (
           <TodoItem item={item} />
         )}

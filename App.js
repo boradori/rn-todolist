@@ -4,21 +4,21 @@ import { GlobalProvider } from './context/GlobalState'
 import { SafeAreaView, View, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import tailwind from 'tailwind-rn'
 import Header from './components/header'
-
 import TodoList from './components/todoList'
 import AddTodo from './components/addTodo'
+import Sandbox from './components/sandbox'
 
 export default function App() {
 
   return (
     <GlobalProvider>
+      {/* <Sandbox /> */}
       <TouchableWithoutFeedback onPress={() => {
         Keyboard.dismiss()
-        console.log("Dismissed keyboard")
       }}>
         <SafeAreaView style={tailwind('flex-1')}>
           <Header />
-          <View style={tailwind('p-6')}>
+          <View style={tailwind('flex-1 p-6')}>
             <AddTodo />
             <TodoList />
           </View>
