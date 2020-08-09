@@ -21,7 +21,6 @@ const AddTodo = () => {
       addTodo({ text: text, _id: uuidv4() })
       textInput.clear()
       setText("")
-      setModalVisible(true)
     } else {
       Alert.alert("Oops!", "Todos must be over 3 characters long", [
         {text: "Understood", onPress: () => console.log("alert closed")},
