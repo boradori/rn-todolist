@@ -40,7 +40,7 @@ const AddTodo = () => {
         onSubmitEditing={submitTodo}
       />
       <Button
-        style={tailwind('justify-center rounded-lg h-12 my-4 p-4 bg-gray-100')}
+        style={tailwind('justify-center rounded-lg my-4 p-4 bg-gray-100')}
         onPress={submitTodo}
       >
         <Text style={tailwind('text-gray-600 self-center text-2xl font-bold')}>Add Todo</Text>

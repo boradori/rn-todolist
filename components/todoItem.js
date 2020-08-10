@@ -18,7 +18,7 @@ const TodoItem = ({ item }) => {
 
   return (
     <Button
-      style={tailwind('justify-center rounded-lg h-12 mt-4 px-4 py-6 bg-pink-300')}
+      style={tailwind('justify-center rounded-lg mt-4 px-4 py-6 bg-pink-300')}
       onPress={() => deleteTodo(item._id)}
     >
       <View style={tailwind("flex-row justify-between items-center")}>
